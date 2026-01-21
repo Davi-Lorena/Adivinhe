@@ -11,10 +11,11 @@ import { LettersUsed, type LettersUsedProps } from "./components/LettersUsed"
 import styles from "./app.module.css"
 
 export default function App() {
+  const [score, setScore] = useState(0)
 const [attempts, setAttempts] = useState(0)
 const [letter, setLetter] = useState("")
 const [lettersUsed, setLettersUsed] = useState<LettersUsedProps[]>([])
-  const [challenge, setChallenge] = useState<Challenge | null>(null)
+const [challenge, setChallenge] = useState<Challenge | null>(null)
 
 function handleRestartGame() {
   alert("Reiniciar o jogo")
@@ -29,6 +30,25 @@ setAttempts(0)
 setLetter("")
 }
 
+function handleConfirm() {
+if(!challenge) return;
+if(!letter.trim()) return alert("Digite uma letra");
+
+const value = letter.toUpperCase()
+const exists = lettersUsed.find((used) => used.value.toUpperCase() === value)
+
+if(exists) return alert("Você já utilizou essa letra: " + value)
+
+const hits = challenge.word.toUpperCase().split("").filter((char) => char === value).length
+
+const correct = hits > 0
+const currentScore = score + hits
+
+  setLettersUsed((prevState) => [...prevState, {value, correct}])
+setScore(currentScore)
+setLetter("")
+}
+
 useEffect(() => {
   startGame()
 }, [])
@@ -39,7 +59,7 @@ return (
   <div className={styles.container}>
     <main>
     <Header current={attempts} max={10} onRestart={handleRestartGame} />
-    <Tip tip="Uma das linguagem de programação dinâmica" />
+    <Tip tip={challenge.tip} />
     <div className={styles.word}>
       {
 challenge.word.split("").map(() =>
@@ -49,8 +69,8 @@ challenge.word.split("").map(() =>
 
     <h4>Palpite</h4>
     <div className={styles.guess}>
-<Input autoFocus maxLength={1} placeholder="?"/>
-<Button title="Confirmar"/>
+<Input autoFocus value={letter} maxLength={1} placeholder="?" onChange={(e) => setLetter(e.target.value)}/>
+<Button title="Confirmar" onClick={handleConfirm}/>
     </div>
 
     <LettersUsed data={lettersUsed} />
