@@ -16,7 +16,13 @@ return (
     <main>
     <Header current={5} max={10} onRestart={handleRestartGame} />
     <Tip tip="Uma das linguagem de programação dinâmica" />
+    <div className={styles.word}>
+      <Letter value="r"/>
+      <Letter value="e"/>
     <Letter value="a"/>
+    <Letter value="c"/>
+    <Letter value="t"/>
+    </div>
     </main>
   </div>
 )
