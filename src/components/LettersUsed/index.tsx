@@ -21,7 +21,6 @@ export function LettersUsed({ data}: Props) {
                     <Letter key={value} value={value} size="small" color={correct ? "correct" : "wrong"} />
                 ))
                }
-                  <Letter value="Z" size="small"/>
             </div>
         </div>
     )
