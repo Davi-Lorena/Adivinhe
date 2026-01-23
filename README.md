@@ -11,6 +11,8 @@
 O **Adivinhe** é um jogo interativo de adivinhação de palavras desenvolvido com React e TypeScript. O objetivo é descobrir a palavra secreta baseando-se em uma dica temática antes que o limite de tentativas se esgote.
 <br/> O projeto foi desenvolvido na trilha Fullstack, da Rocketseat 💜.
 
+<img width="1919" height="969" alt="Captura de tela 2026-01-23 135927" src="https://github.com/user-attachments/assets/a4a734ea-c0c2-4591-aaa6-d2840699b6eb" />
+
 ### 🎯 Funcionalidades e Propósito
 
 O jogo foi desenhado para testar o vocabulário e a lógica do usuário através de um sistema de dicas e palpites.
