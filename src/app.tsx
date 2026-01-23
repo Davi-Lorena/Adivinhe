@@ -16,7 +16,7 @@ const [letter, setLetter] = useState("")
 const [lettersUsed, setLettersUsed] = useState<LettersUsedProps[]>([])
 const [challenge, setChallenge] = useState<Challenge | null>(null)
 
-const ATTEMPTS_MARGIN = 5
+const ATTEMPTS_MARGIN = 4
 
 function handleRestartGame() {
   const isConfirmed = window.confirm("Tem certeza que deseja reiniciar o jogo?")
@@ -78,7 +78,7 @@ if(lettersUsed.length === attemptLimit) {
   return endGame("Que pena, você usou todas as tentativas")
 }
 
-}, 200)
+}, 300)
 
 }, [score, lettersUsed.length])
 
